@@ -1,0 +1,1151 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>전우진</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#eef2ee;
+  --surface:#ffffff;
+  --surface-2:#e2e9e3;
+  --border:#c7d1c8;
+  --ink:#0f1f17;
+  --ink-muted:#4c5c53;
+  --accent:#0c7a52;
+  --accent-strong:#0a5f40;
+  --accent-ink:#f4fff8;
+  --amber:#8a5200;
+  --shadow:0 1px 2px rgba(15,31,23,.08);
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0f0d;
+    --surface:#101917;
+    --surface-2:#16211c;
+    --border:#243229;
+    --ink:#e7f1ea;
+    --ink-muted:#8aa398;
+    --accent:#5eeab0;
+    --accent-strong:#8ff5c4;
+    --accent-ink:#062014;
+    --amber:#f2b263;
+    --shadow:0 1px 2px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0f0d;
+  --surface:#101917;
+  --surface-2:#16211c;
+  --border:#243229;
+  --ink:#e7f1ea;
+  --ink-muted:#8aa398;
+  --accent:#5eeab0;
+  --accent-strong:#8ff5c4;
+  --accent-ink:#062014;
+  --amber:#f2b263;
+  --shadow:0 1px 2px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+::selection{background:var(--accent);color:var(--accent-ink);}
+
+.wrap{
+  max-width:920px;
+  margin:0 auto;
+  padding-inline:24px;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:920px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.nav-id{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.02em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nav-id .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+  flex:none;
+}
+.nav-links{
+  display:flex;
+  gap:20px;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.nav-links a{text-decoration:none;color:var(--ink-muted);white-space:nowrap;}
+@media (max-width:700px){ .nav-links{ overflow-x:auto; min-width:0; scrollbar-width:none; } .nav-id{ flex:none; } }
+.nav-links a:hover{color:var(--accent-strong);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  overflow:clip;
+  border-bottom:1px solid var(--border);
+}
+.hero-scope{
+  position:absolute;
+  top:-140px;
+  right:-160px;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.5;
+  background:
+    repeating-radial-gradient(circle at center,
+      color-mix(in srgb, var(--accent) 30%, transparent) 0 1px,
+      transparent 1px 74px);
+}
+.hero-scope::before,
+.hero-scope::after{
+  content:"";
+  position:absolute;
+  background:color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.hero-scope::before{ left:50%; top:0; bottom:0; width:1px; }
+.hero-scope::after{ top:50%; left:0; right:0; height:1px; }
+.hero-sweep{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,
+    color-mix(in srgb, var(--accent) 55%, transparent),
+    transparent 26%);
+  animation:sweep 6s linear infinite;
+  mix-blend-mode:screen;
+}
+@media (prefers-color-scheme: light){ .hero-sweep{ mix-blend-mode:multiply; } }
+:root[data-theme="light"] .hero-sweep{ mix-blend-mode:multiply; }
+@keyframes sweep{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){ .hero-sweep{ animation:none; } }
+
+.hero-body{
+  position:relative;
+  padding-block:76px 56px;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-strong);
+  margin:0 0 18px;
+}
+.hero h1{
+  font-size:clamp(40px, 7vw, 64px);
+  line-height:1.05;
+  margin:0 0 10px;
+  font-weight:700;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.hero .role{
+  font-size:clamp(17px,2.6vw,20px);
+  color:var(--ink-muted);
+  margin:0 0 28px;
+  font-weight:500;
+}
+.hero p.lede{
+  max-width:56ch;
+  font-size:16.5px;
+  color:var(--ink);
+  margin:0 0 32px;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 28px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--ink-muted);
+}
+.hero-meta span b{color:var(--ink); font-weight:600;}
+
+.termline{
+  margin-top:34px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--ink-muted);
+  border-left:2px solid var(--border);
+  padding-left:14px;
+}
+.termline .prompt{color:var(--accent-strong);}
+.caret{
+  display:inline-block;
+  width:7px;height:14px;
+  background:var(--accent);
+  margin-left:2px;
+  vertical-align:-2px;
+  animation:blink 1.1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce){ .caret{ animation:none; opacity:.6; } }
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ---------- section shell ---------- */
+section{ padding-block:64px; border-bottom:1px solid var(--border); }
+section:last-of-type{ border-bottom:none; }
+.section-head{ margin-bottom:34px; }
+.section-head .eyebrow{ margin-bottom:8px; }
+.section-head h2{
+  font-size:clamp(24px,4vw,30px);
+  margin:0;
+  letter-spacing:-.01em;
+}
+
+/* ---------- skills / loadout ---------- */
+.loadout{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(190px,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+.loadout-cell{
+  background:var(--surface);
+  padding:20px 20px 22px;
+}
+.loadout-cell h3{
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin:0 0 12px;
+}
+.pillrow{ display:flex; flex-wrap:wrap; gap:7px; }
+.pill{
+  font-family:var(--mono);
+  font-size:12.5px;
+  padding:5px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--surface-2);
+  color:var(--ink);
+  white-space:nowrap;
+}
+
+/* ---------- project ---------- */
+.project{ padding-block:64px; border-bottom:1px solid var(--border); }
+.project-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:8px;
+}
+.project-tag{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--accent-strong);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.project h2{
+  font-size:clamp(24px,4vw,32px);
+  margin:6px 0 14px;
+  letter-spacing:-.01em;
+}
+.project .summary{
+  max-width:68ch;
+  color:var(--ink-muted);
+  font-size:16px;
+  margin:0 0 30px;
+}
+.techrow{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:36px; }
+.techrow .pill{ background:var(--surface); }
+
+/* flow diagram */
+.flow{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  margin-bottom:10px;
+  flex-wrap:wrap;
+}
+.node{
+  flex:1 1 150px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+}
+.node .node-role{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin:0 0 4px;
+}
+.node .node-name{
+  font-weight:600;
+  font-size:14.5px;
+  margin:0 0 4px;
+}
+.node .node-detail{
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--ink-muted);
+}
+.arrow{
+  flex:0 0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:0 10px;
+  min-width:96px;
+}
+.arrow-label{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:var(--ink-muted);
+  text-align:center;
+  line-height:1.4;
+  white-space:nowrap;
+}
+.arrow-glyph{ color:var(--accent-strong); font-size:16px; line-height:1; }
+.arrow-glyph::before{ content:"→"; }
+@media (max-width:660px){
+  .flow{ flex-direction:column; }
+  .arrow{ flex-direction:row; min-width:0; padding:8px 0; }
+  .arrow-label{ white-space:normal; text-align:left; }
+  .arrow-glyph::before{ content:"↓"; }
+}
+.flow-note{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--ink-muted);
+  margin:14px 0 40px;
+  padding-left:2px;
+}
+.flow-note b{ color:var(--ink); font-weight:600; }
+
+/* pipeline strip */
+.pipeline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-bottom:40px;
+}
+.pipe-stage{
+  font-family:var(--mono);
+  font-size:12.5px;
+  font-weight:600;
+  padding:8px 13px;
+  border-radius:6px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+}
+.pipe-arrow{ color:var(--ink-muted); font-size:14px; }
+
+/* problem -> solution cases */
+.block-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin:0 0 16px;
+}
+.case-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-bottom:40px;
+}
+.case-num{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  color:var(--ink-muted);
+  margin:0 0 8px;
+}
+.case-grid{
+  display:grid;
+  grid-template-columns:1fr 32px 1fr;
+  align-items:stretch;
+}
+.case-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px 18px;
+}
+.case-box.problem{ border-left:3px solid var(--amber); }
+.case-box.solution{ border-left:3px solid var(--accent); }
+.case-label{
+  font-family:var(--mono);
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  margin:0 0 8px;
+}
+.case-box.problem .case-label{ color:var(--amber); }
+.case-box.solution .case-label{ color:var(--accent-strong); }
+.case-text{ font-size:14.3px; margin:0; }
+.case-text code{ font-family:var(--mono); font-size:.92em; }
+.case-arrow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--ink-muted);
+  font-size:16px;
+}
+.case-arrow::before{ content:"→"; }
+@media (max-width:640px){
+  .case-grid{ grid-template-columns:1fr; gap:8px; }
+  .case-arrow{ padding:2px 0; }
+  .case-arrow::before{ content:"↓"; }
+}
+
+/* mode table (UGV) */
+.modetable{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+  margin:0 0 40px;
+  overflow-x:auto;
+  display:block;
+}
+.modetable table{ width:100%; border-collapse:collapse; min-width:520px; }
+.modetable th, .modetable td{
+  text-align:left;
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+  font-variant-numeric:tabular-nums;
+}
+.modetable thead th{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  border-bottom:1px solid var(--border);
+}
+.modetable td.code{ font-family:var(--mono); color:var(--amber); }
+.modetable tbody tr:last-child td{ border-bottom:none; }
+
+/* footer */
+footer{ padding-block:56px 72px; }
+.contact-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:32px;
+}
+.contact-card h2{ font-size:22px; margin:0 0 6px; }
+.contact-card p{ margin:0; color:var(--ink-muted); font-size:14.5px; }
+.btn{
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  color:var(--accent-ink);
+  background:var(--accent);
+  padding:12px 20px;
+  border-radius:8px;
+  white-space:nowrap;
+}
+.btn:hover{ background:var(--accent-strong); }
+.link-pill{
+  font-family:var(--mono);
+  font-size:12.5px;
+  font-weight:600;
+  text-decoration:none;
+  color:var(--ink);
+  border:1px solid var(--border);
+  background:var(--surface);
+  padding:6px 12px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.link-pill:hover{ border-color:var(--accent-strong); color:var(--accent-strong); }
+.role-note{
+  font-size:13.5px;
+  color:var(--ink-muted);
+  border-left:2px solid var(--border);
+  padding-left:12px;
+  margin:-14px 0 30px;
+}
+.foot-meta{
+  margin-top:28px;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--ink-muted);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* ---------- education / certs ---------- */
+.edu-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:16px;
+}
+@media (max-width:700px){ .edu-grid{ grid-template-columns:1fr; } }
+.edu-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:24px 24px 22px;
+  box-shadow:var(--shadow);
+}
+.edu-kind{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin:0 0 10px;
+}
+.edu-title{
+  font-size:19px;
+  font-weight:700;
+  margin:0 0 4px;
+  letter-spacing:-.005em;
+}
+.edu-status{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--accent-ink);
+  background:var(--accent);
+  padding:2px 8px;
+  border-radius:4px;
+  margin-bottom:14px;
+}
+.edu-period{ font-family:var(--mono); font-size:12.5px; color:var(--ink-muted); margin-left:8px; }
+.edu-desc{ font-size:14.5px; color:var(--ink-muted); margin:0 0 16px; }
+.edu-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--border);
+}
+.edu-list li{
+  display:grid;
+  grid-template-columns:118px 1fr;
+  gap:14px;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+  font-size:14px;
+}
+.edu-list li:last-child{ border-bottom:none; }
+.edu-list .k{
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--accent-strong);
+  padding-top:2px;
+}
+@media (max-width:480px){ .edu-list li{ grid-template-columns:1fr; gap:2px; } }
+.grade{
+  font-family:var(--mono);
+  font-size:56px;
+  font-weight:700;
+  line-height:1;
+  color:var(--accent-strong);
+  margin:6px 0 8px;
+  letter-spacing:-.02em;
+}
+.grade-sub{ font-size:13.5px; color:var(--ink-muted); margin:0; }
+
+h2, h1{ text-wrap:balance; }
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-id"><span class="dot" aria-hidden="true"></span>전우진 · Embedded</div>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#observer">Observer</a>
+      <a href="#ugv">UGV System</a>
+      <a href="#tracking">Tracking</a>
+      <a href="#smartpot">Smart Pot</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-scope" aria-hidden="true"><div class="hero-sweep"></div></div>
+  <div class="wrap hero-body">
+    <p class="eyebrow">Embedded Systems Engineer</p>
+    <h1>전우진</h1>
+    <p class="role">레이더 신호처리기부터 BLE 무선 제어 로봇까지, 실시간성이 요구되는 임베디드 시스템을 설계합니다</p>
+    <p class="lede">건국대학교 전기전자공학을 전공했고, C/C++ 기반의 임베디드 소프트웨어를 주로 다룹니다. 신호처리 파이프라인의 실시간 처리 구조를 잡는 일과, RTOS 위에서 통신·제어 루프의 타이밍을 맞추는 일 모두를 프로젝트 단위로 처음부터 끝까지 설계·구현해왔습니다.</p>
+    <div class="hero-meta">
+      <span>건국대학교 · <b>전기전자공학</b></span>
+      <span>Languages · <b>C / C++</b></span>
+      <span>OS · <b>Linux (Ubuntu, PetaLinux)</b></span>
+      <span>OPIc · <b>IH</b></span>
+    </div>
+    <div class="termline">
+      <span class="prompt">$</span> boards --tried<br>
+      ESP32, STM32, ARM 기반 프로세서, Zynq-7000, Jetson Orin NX<span class="caret" aria-hidden="true"></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="skills" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Stack</p>
+      <h2>사용 기술</h2>
+    </div>
+    <div class="loadout">
+      <div class="loadout-cell">
+        <h3>Languages</h3>
+        <div class="pillrow">
+          <span class="pill">C</span>
+          <span class="pill">C++</span>
+        </div>
+      </div>
+      <div class="loadout-cell">
+        <h3>OS / RTOS</h3>
+        <div class="pillrow">
+          <span class="pill">Linux (Ubuntu)</span>
+          <span class="pill">PetaLinux</span>
+          <span class="pill">FreeRTOS</span>
+        </div>
+      </div>
+      <div class="loadout-cell">
+        <h3>Boards / Targets</h3>
+        <div class="pillrow">
+          <span class="pill">ESP32</span>
+          <span class="pill">STM32</span>
+          <span class="pill">ARM 기반 프로세서</span>
+          <span class="pill">Zynq-7000</span>
+          <span class="pill">Jetson Orin NX</span>
+        </div>
+      </div>
+      <div class="loadout-cell">
+        <h3>Domains</h3>
+        <div class="pillrow">
+          <span class="pill">실시간 신호처리</span>
+          <span class="pill">무선 프로토콜 설계</span>
+          <span class="pill">통신 신호처리</span>
+          <span class="pill">임베디드 SW</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Education &amp; Language</p>
+      <h2>교육 이수 · 어학</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <p class="edu-kind">교육 이수</p>
+        <p class="edu-title">LIG D&amp;A THE SSEN 임베디드 SW스쿨</p>
+        <span class="edu-status">수료</span> <span class="edu-period">2025.12.01 – 2026.06.09</span>
+        <p class="edu-desc">방산 분야 임베디드 소프트웨어 개발자를 양성하는 과정으로, 언어·시스템 프로그래밍부터 실시간 임베디드 환경, 방산 SW 개발 프로세스, 팀 프로젝트까지 실무 중심으로 이수했습니다.</p>
+        <ul class="edu-list">
+          <li><span class="k">LANGUAGE</span><span>C / C++ 심화, 객체지향 설계, 자료구조·알고리즘</span></li>
+          <li><span class="k">LINUX</span><span>Linux 시스템 프로그래밍 — 프로세스·스레드, 동기화, IPC, 소켓(TCP/UDP) 네트워크 프로그래밍</span></li>
+          <li><span class="k">KERNEL</span><span>리눅스 커널 프로그래밍 — 커널 모듈, 디바이스 드라이버(문자 디바이스), 커널 동기화·인터럽트 처리</span></li>
+          <li><span class="k">EMBEDDED</span><span>MCU 펌웨어 개발(GPIO·UART·타이머·인터럽트·DMA), RTOS 기반 태스크 설계, 임베디드 리눅스</span></li>
+          <li><span class="k">DSP</span><span>디지털 신호처리 기초와 레이더 신호처리 개념, 실시간 처리 구조</span></li>
+          <li><span class="k">PROCESS</span><span>방산 SW 개발 프로세스 — 요구사항 분석, ICD 작성, 형상관리, 테스트·검증</span></li>
+          <li><span class="k">PROJECT</span><span>팀 단위 임베디드 시스템 설계·구현 프로젝트 수행</span></li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <p class="edu-kind">어학</p>
+        <p class="edu-title">OPIc (English)</p>
+        <p class="grade">IH</p>
+        <p class="grade-sub">Intermediate High — 영어 기술 문서 독해 및 업무 커뮤니케이션 가능</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT 1: OBSERVER ===================== -->
+  <section id="observer" class="project wrap">
+    <div class="project-head">
+      <span class="project-tag">Project 01 — Radar Signal Processing</span>
+      <a class="link-pill" href="https://github.com/jwj1874/Radar_observer" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <h2>Observer — 레이더 표적 탐지 시스템</h2>
+    <p class="summary">레이더 IQ 원시신호를 실시간으로 수신해 신호처리하고 표적을 탐지, GUI로 관측하는 파이프라인 전체를 설계·구현한 프로젝트입니다. 신호발생기(시뮬레이터) · 신호처리기(DSP 엔진) · 운용 GUI 세 프로세스가 UDP/TCP로 통신하며 하나의 시스템으로 동작합니다.</p>
+
+    <div class="flow" role="img" aria-label="signal_simulator가 UDP로 IQ 데이터를 signal_processer에 보내면, signal_processer가 신호처리 후 UDP로 표적을, TCP로 그래프 데이터를 GUI에 전달하는 구조">
+      <div class="node">
+        <p class="node-role">Signal Generator</p>
+        <p class="node-name">signal_simulator</p>
+        <p class="node-detail">C++ · .dat 재생</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">UDP · IQ<br>port 9000</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">DSP Engine</p>
+        <p class="node-name">signal_processer</p>
+        <p class="node-detail">C · ARM (ArmPL/FFTW/NE10)</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">UDP 표적:7777<br>TCP 그래프:9999</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">Operator GUI</p>
+        <p class="node-name">wpf_observer</p>
+        <p class="node-detail">C# WPF</p>
+      </div>
+    </div>
+    <p class="flow-note">↩ 역방향: GUI → signal_simulator, <b>UDP START · port 4444</b> (운용자가 GUI에서 송신 개시 명령)</p>
+
+    <div class="pipeline" aria-label="신호처리 파이프라인: Pulse Compression, MTI, MTD, CFAR, Clustering 순서로 처리">
+      <span class="pipe-stage">Pulse Compression</span><span class="pipe-arrow">→</span>
+      <span class="pipe-stage">MTI</span><span class="pipe-arrow">→</span>
+      <span class="pipe-stage">MTD</span><span class="pipe-arrow">→</span>
+      <span class="pipe-stage">CFAR</span><span class="pipe-arrow">→</span>
+      <span class="pipe-stage">Clustering</span>
+    </div>
+    <p class="flow-note">운용 모드(실시간 탐지맵·표적 리스트)·분석 모드(dwell 그래프·트랙맵)를 제공하는 C# WPF GUI와 연동하고, 통신 프로토콜(ICD) 문서를 직접 작성</p>
+
+    <p class="block-label">문제 · 해결</p>
+    <div class="case-list">
+      <div class="case">
+        <p class="case-num">CASE 01</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">타겟 보드나 라이선스 상황에 따라 FFT/BLAS 연산 라이브러리가 바뀔 수 있는데, 그때마다 신호처리 파이프라인 코드를 다시 손대야 한다면 유지보수가 어려워짐.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text"><b>ArmPL / FFTW / NE10</b> 세 백엔드를 빌드 타임 옵션으로 선택 가능하도록 추상화해, 백엔드가 바뀌어도 Pulse Compression → MTI → MTD → CFAR → Clustering 파이프라인 로직은 그대로 재사용.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 02</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">레이더는 dwell 주기 안에 처리를 끝내야 하는데, 스케줄러가 다른 프로세스에 밀리거나 스레드가 다른 코어로 옮겨가면 처리 시간이 들쭉날쭉해질 위험이 있었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">CPU 코어를 <code>cset shield</code>로 격리하고 OpenMP 스레드를 해당 코어에 고정, <code>chrt -f 99</code>로 FIFO 실시간 스케줄링을 적용. <code>perf record/stat</code>로 처리 시간을 실측하며 지연을 관리.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 03</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">ARM 타겟 보드가 없으면 신호처리 엔진을 개발·검증할 수 없어, 매번 실제 보드에 올려야만 동작을 확인할 수 있었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">각 처리 단계를 <code>IPulseCompressor</code> 등 인터페이스로 분리하고 연산 라이브러리를 Intel MKL로 교체한 x86 버전을 C++로 재작성(<code>signal_processer_cpp</code>)해, 보드 없이 개발 PC에서 알고리즘을 검증할 수 있게 함.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 04</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">x86 포팅 중, 원본 ARM 백엔드가 fast-time 샘플 수를 그대로 range bin 개수로 사용해 실제로 채워지지 않은 tail 구간이 MTI/MTD/CFAR/Clustering까지 그대로 흘러들어가는 것을 발견.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">유효 range 길이를 <code>out_fast_time = fast_time - (num_pulse_samples - 1)</code>로 재계산해 모든 단계에서 통일하고, 회귀 테스트로 재검증.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="techrow" style="margin-top:32px;">
+      <span class="pill">C</span><span class="pill">C++</span><span class="pill">Intel MKL</span>
+      <span class="pill">ArmPL</span><span class="pill">FFTW</span><span class="pill">NE10</span>
+      <span class="pill">OpenMP</span><span class="pill">UDP/TCP</span><span class="pill">Linux</span>
+      <span class="pill">C# / WPF</span><span class="pill">CMake</span>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT 2: UGV ===================== -->
+  <section id="ugv" class="project wrap">
+    <div class="project-head">
+      <span class="project-tag">Project 02 — Wireless Vehicle Control</span>
+      <a class="link-pill" href="https://github.com/jwj1874/UGV_System" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <h2>UGV System — 4축 로봇팔 무인 지상차량 제어 시스템</h2>
+    <p class="summary">4축 로봇팔을 탑재한 무인 지상차량을 BLE로 원격 제어하는 시스템입니다. 컨트롤러 보드와 차량 보드를 각각 STM32F103 + FreeRTOS로 구성하고, 20ms 주기의 결정론적 제어 루프로 조향·회전·암 제어 명령을 송수신·전달하는 구조를 설계·구현했습니다.</p>
+
+    <div class="flow" role="img" aria-label="컨트롤러 보드가 조이스틱과 버튼 입력을 BLE UART로 차량 보드에 전송하고, 차량 보드가 명령을 모터와 서보에 분배하는 구조">
+      <div class="node">
+        <p class="node-role">Controller Board</p>
+        <p class="node-name">UGV_Controller</p>
+        <p class="node-detail">STM32F103 · FreeRTOS · Joystick/ADC</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">BLE UART<br>SOF+XOR 체크섬</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">Vehicle Board</p>
+        <p class="node-name">UGV_Car</p>
+        <p class="node-detail">STM32F103 · FreeRTOS · Motor/Servo</p>
+      </div>
+    </div>
+    <p class="flow-note">20ms 주기로 <b>osDelayUntil</b> 기반 제어 루프가 조이스틱/버튼 상태를 읽어 패킷을 구성 → 송신하는 구조를 반복</p>
+
+    <div class="modetable">
+      <table>
+        <thead>
+          <tr><th>Mode</th><th>Opcode</th><th>Dispatcher</th><th>Consumer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DRIVING</td><td class="code">0xFF</td><td>Moter_dispatch → MOTER_QUEUE</td><td>DriveTask (구동 모터)</td></tr>
+          <tr><td>ROTATE</td><td class="code">0xDD</td><td>Moter_dispatch → MOTER_QUEUE</td><td>DriveTask (제자리 회전)</td></tr>
+          <tr><td>ARM</td><td class="code">0x00</td><td>Servo_dispatch → SERVO_QUEUE</td><td>RobotArmTask (4축 서보)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="block-label">문제 · 해결</p>
+    <div class="case-list">
+      <div class="case">
+        <p class="case-num">CASE 01</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">BLE(UART) 무선 구간은 노이즈에 취약해서, 패킷이 깨진 채로 수신되면 모터나 서보가 잘못된 값으로 오동작할 위험이 있었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">SOF(<code>0xAA</code>) + 14바이트 고정 길이 + XOR 체크섬으로 프레이밍한 자체 패킷 포맷을 설계해, 체크섬이 맞지 않는 패킷은 폐기하도록 구현.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 02</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">인터럽트(ISR) 안에서 체크섬 검증이나 디코딩 같은 무거운 처리를 하면 다음 인터럽트 응답이 늦어지고 시스템 전체가 불안정해질 수 있었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">UART Idle-line 검출 + DMA(<code>HAL_UARTEx_ReceiveToIdle_DMA</code>)로 가변 길이 패킷을 수신하고, ISR은 수신 이벤트만 메시지 큐(<b>MOTER_QUEUE / SERVO_QUEUE</b>)에 적재한 뒤 즉시 반환. 검증·디코딩은 Dispatcher 태스크 컨텍스트에서 처리.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 03</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">태스크 실행 시간이 매번 달라지면 <code>osDelay</code>만으로는 오차가 누적되어, 시간이 지날수록 실제 명령 송신 간격이 목표 주기(20ms)에서 점점 벌어짐.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text"><code>osDelayUntil</code>로 절대 시각 기준 다음 실행 시점을 미리 계산해, 태스크 실행 시간과 무관하게 고정 주기를 유지하도록 구현.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 04</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">컨트롤러 하나로 주행(조이스틱)과 로봇팔 조작(서보)을 모두 지원해야 하는데, 두 입력 체계를 하나의 로직에 억지로 합치면 분기가 복잡해지고 확장이 어려워짐.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">공통 인터페이스 <code>IController</code>를 두고 조이스틱 컨트롤러와 서보 컨트롤러를 런타임에 교체하는 구조로 설계, <code>SystemManager</code>는 현재 어떤 컨트롤러가 붙어있는지 몰라도 되게 함.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 05</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">목표각을 서보에 그대로 넘기면 각도가 급격히 바뀔 때 로봇팔이 튀듯이 움직여 기구적 충격과 떨림이 발생.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">사다리꼴 속도 프로파일(가속-정속-감속)로 목표각까지 보간해, 현재각을 매 주기 갱신하며 부드럽게 움직이도록 구현. <code>IPwmDriver</code>/<code>ITrajectory</code> 인터페이스로 축(ServoAxis) 로직과 하드웨어 종속 코드를 분리.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="techrow" style="margin-top:32px;">
+      <span class="pill">C</span><span class="pill">C++</span><span class="pill">STM32F103</span>
+      <span class="pill">FreeRTOS</span><span class="pill">UART/BLE</span><span class="pill">CMake</span>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT 3: AI OBJECT TRACKING ===================== -->
+  <section id="tracking" class="project wrap">
+    <div class="project-head">
+      <span class="project-tag">Project 03 — Computer Vision Tracking</span>
+      <span class="link-pill" style="opacity:.6;">Private repo</span>
+    </div>
+    <h2>AI 흡연 감지·추적 시스템</h2>
+    <p class="summary">금연구역에서 불이 붙은 담배를 객체 인식으로 탐지·추적해, 추적 지점으로 액추에이터(물총)를 조준·발사하는 것을 목표로 한 시스템입니다. 원래 타겟 보드였던 Jetson Orin NX를 구할 수 없게 되면서 일반 PC에서 동작하는 애플리케이션으로 재구성했고, 이 과정에서 단일 스레드 구조를 파이프라인 단계별 멀티스레드 구조로 다시 설계했습니다.</p>
+
+    <div class="flow" role="img" aria-label="카메라 영상을 Python YOLOv8이 탐지해 UDP로 좌표를 보내면, C++ 트래커가 Kalman Filter와 PID로 제어값을 계산해 시리얼로 STM32에 전달하는 구조">
+      <div class="node">
+        <p class="node-role">Detection</p>
+        <p class="node-name">Python · YOLOv8</p>
+        <p class="node-detail">Ultralytics · CUDA</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">UDP<br>port 5005</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">Tracking + Control</p>
+        <p class="node-name">C++ Tracker</p>
+        <p class="node-detail">Kalman Filter · PID</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">Serial UART<br>115200bps</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">Actuation</p>
+        <p class="node-name">STM32</p>
+        <p class="node-detail">조준/발사 액추에이터</p>
+      </div>
+    </div>
+    <p class="flow-note">원래 타겟: <b>Jetson Orin NX</b> (보드 미보유로 일반 PC 애플리케이션으로 재구성)</p>
+
+    <p class="block-label">문제 · 해결</p>
+    <div class="case-list">
+      <div class="case">
+        <p class="case-num">CASE 01</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">원래 타겟 보드였던 Jetson Orin NX를 구할 수 없게 되어, 임베디드 보드 위에서 동작하는 것을 전제로 짜둔 구조를 그대로 쓸 수 없었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">일반 PC에서 동작하는 애플리케이션으로 전체 구조를 다시 설계해, 보드 없이도 개발과 시연을 이어갈 수 있게 함.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 02</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">기존 단일 스레드 구조에서는 캡처 → 추론 → 추적 → 제어가 한 루프 안에서 순차 실행돼, 한 단계가 느려지면 파이프라인 전체가 같이 밀림.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">수신·추적·제어를 각각의 스레드로 분리하고, 조건변수 기반 <code>ThreadSafeQueue</code>로 단계 사이를 연결하는 파이프라인 구조로 재설계.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 03</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">YOLO 탐지 결과의 중심 좌표가 프레임마다 미세하게 흔들려서, 그대로 제어에 사용하면 액추에이터가 떨리듯 움직임.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">OpenCV <b>Kalman Filter</b>로 위치 추정을 안정화한 뒤, <b>PID 컨트롤러</b>로 화면 중심과의 오차를 제어값으로 변환해 시리얼(UART)로 STM32에 전달.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 04</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">탐지(Python/YOLO)와 제어(C++)가 언어와 실행 주기가 서로 다른데, 한 프로세스에 합치면 Python 쪽 지연이 제어 루프에도 영향을 줄 수 있음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">두 프로세스를 <b>UDP</b> 소켓으로 분리해 독립적으로 동작시키고, 좌표(x, y, confidence)만 가볍게 주고받도록 구성.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="techrow" style="margin-top:32px;">
+      <span class="pill">Python</span><span class="pill">C++</span><span class="pill">YOLOv8</span>
+      <span class="pill">OpenCV</span><span class="pill">CUDA</span><span class="pill">UDP</span>
+      <span class="pill">Kalman Filter</span><span class="pill">PID</span><span class="pill">Multithreading</span>
+      <span class="pill">CMake</span>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT 4: MATTER SMART POT ===================== -->
+  <section id="smartpot" class="project wrap">
+    <div class="project-head">
+      <span class="project-tag">Project 04 — Matter / IoT</span>
+      <a class="link-pill" href="https://github.com/jwj1874/matter" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <h2>Matter SDK 기반 스마트 화분</h2>
+    <p class="summary">Matter(구 CHIP) SDK를 분석해 ESP32 위에 구현한 스마트 화분입니다. 자체 개발 앱뿐 아니라 <b>Google Home</b>, <b>Apple Home</b>에서도 같은 기기를 커미셔닝하고 제어할 수 있음을 직접 확인해, 특정 플랫폼에 종속되지 않는 스마트홈 기기를 만드는 것이 목표였습니다.</p>
+    <p class="role-note">담당 영역: ESP32 펌웨어(센서/액추에이터 드라이버) 및 Matter SDK 연동 — 자체 앱 UI 개발은 별도 팀원 담당.</p>
+
+    <div class="flow" role="img" aria-label="ESP32 펌웨어가 Matter 프로토콜로 자체 앱, Google Home, Apple Home 세 컨트롤러와 연동되는 구조">
+      <div class="node">
+        <p class="node-role">Device Firmware</p>
+        <p class="node-name">ESP32 (ESP-IDF)</p>
+        <p class="node-detail">Matter (CHIP) SDK · OpenThread</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><span class="arrow-label">Matter<br>커미셔닝</span><span class="arrow-glyph"></span></div>
+      <div class="node">
+        <p class="node-role">Matter Controllers</p>
+        <p class="node-name">자체 앱 · Google Home · Apple Home</p>
+        <p class="node-detail">동일 기기 · 7 endpoints 연동 확인</p>
+      </div>
+    </div>
+    <p class="flow-note">센서·상태 변경 이벤트는 펌웨어에서 <b>Firebase</b>로도 동기화해 자체 앱 백엔드와 별도 연동</p>
+
+    <div class="modetable">
+      <table>
+        <thead>
+          <tr><th>Endpoint</th><th>Matter Cluster</th><th>역할</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>LED</td><td class="code">OnOff</td><td>조명</td></tr>
+          <tr><td>Heat LED</td><td class="code">OnOff</td><td>보온용 히팅</td></tr>
+          <tr><td>Water Pump</td><td class="code">OnOff</td><td>급수 펌프</td></tr>
+          <tr><td>CDS Sensor</td><td class="code">IlluminanceMeasurement</td><td>조도 감지</td></tr>
+          <tr><td>DHT11 Temp</td><td class="code">TemperatureMeasurement</td><td>온도 감지</td></tr>
+          <tr><td>DHT11 Humidity</td><td class="code">RelativeHumidityMeasurement</td><td>습도 감지</td></tr>
+          <tr><td>Soil Moisture</td><td class="code">RelativeHumidityMeasurement</td><td>토양 수분 감지</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="block-label">문제 · 해결</p>
+    <div class="case-list">
+      <div class="case">
+        <p class="case-num">CASE 01</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">스마트홈 기기를 자체 앱으로만 제어하게 만들면, 사용자가 이미 쓰고 있는 Google Home·Apple Home 생태계와 분리되어 특정 플랫폼에 종속되는 문제가 있음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">Matter(CHIP) SDK를 분석해 표준 클러스터(OnOff, TemperatureMeasurement 등)로 기기를 구현, 자체 앱 외에 <b>Google Home·Apple Home</b>에서도 동일 기기를 커미셔닝·제어할 수 있음을 직접 확인.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 02</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">ESP32에서 온습도(DHT11)·조도(CDS)·토양수분·워터펌프·LED를 모두 제어하려면 각 부품에 맞는 드라이버가 필요한데, 참고할 수 있는 레퍼런스가 제한적이었음.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">각 부품의 드라이버(<code>dht</code>/<code>cds_task</code>/<code>soil_task</code>/<code>water_pump</code>/<code>led</code>)를 직접 작성하고, 공용 ADC 핸들로 여러 아날로그 센서를 멀티플렉싱해 읽도록 구현.</p>
+          </div>
+        </div>
+      </div>
+      <div class="case">
+        <p class="case-num">CASE 03</p>
+        <div class="case-grid">
+          <div class="case-box problem">
+            <p class="case-label">문제</p>
+            <p class="case-text">기기가 리셋되거나 페어링이 끊기면 다시 앱에서 수동으로 커미셔닝해야 해서 번거로움.</p>
+          </div>
+          <div class="case-arrow" aria-hidden="true"></div>
+          <div class="case-box solution">
+            <p class="case-label">해결</p>
+            <p class="case-text">팹릭이 비어 있을 때 자동으로 커미셔닝 윈도우(DNS-SD, 300초)를 열고, 팩토리 리셋 버튼으로 즉시 재커미셔닝할 수 있도록 구현.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="techrow" style="margin-top:32px;">
+      <span class="pill">C / C++</span><span class="pill">ESP32 (ESP-IDF)</span><span class="pill">Matter (CHIP) SDK</span>
+      <span class="pill">OpenThread</span><span class="pill">Google Home</span><span class="pill">Apple Home</span>
+      <span class="pill">Firebase</span>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap">
+    <div class="contact-card">
+      <div>
+        <h2>연락하기</h2>
+        <p>프로젝트 코드, 문서, 시연 영상 등 더 자세한 자료가 필요하면 언제든 연락 주세요.</p>
+      </div>
+      <a class="btn" href="mailto:jonwoojin@gmail.com">jonwoojin@gmail.com</a>
+    </div>
+    <div class="foot-meta">
+      <span>전우진 · 건국대학교 전기전자공학 · LIG D&amp;A THE SSEN 임베디드 SW스쿨 수료</span>
+      <span>Embedded Software Engineer</span>
+    </div>
+  </section>
+</main>
+
+
+</body></html>
